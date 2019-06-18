@@ -1,6 +1,6 @@
 ## About
 
-A simple document distance program to compare similarity between two files using [cosine similarity](https://en.wikipedia.org/wiki/Cosine_similarity).
+A simple document distance program to compare similarities between two files using [cosine similarity](https://en.wikipedia.org/wiki/Cosine_similarity).
 
 
 ## Usage
