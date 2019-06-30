@@ -1,5 +1,6 @@
 import os
 import re
+import operator
 import argparse
 
 from math import sqrt, acos
@@ -74,16 +75,12 @@ def create_vector(frequency):
     return vector
 
 
-def normalise(vector):
+def magnitude(vector):
     """
-    Return the euclidean norm of a vector
+    Return the magnitude of a vector
     """
-    norm = 0
 
-    for value in vector:
-        norm += pow(value, 2)
-
-    return sqrt(norm)
+    return sqrt(sum(map(lambda x: x ** 2, vector)))
 
 
 def dot_product(vec1, vec2):
@@ -91,7 +88,7 @@ def dot_product(vec1, vec2):
     Return the dot product between two vectors
     """
 
-    return sum(x * y for x, y in zip(vec1, vec2))
+    return sum(map(operator.mul, vec1, vec2))
 
 
 def distance(vec1, vec2):
@@ -99,7 +96,7 @@ def distance(vec1, vec2):
     Return the distance between two documents. Defined by cosine similarity measurement
     """
     return acos((dot_product(vec1, vec2)) /
-                (normalise(vec1) * normalise(vec2)))
+                (magnitude(vec1) * magnitude(vec2)))
 
 
 def compare_documents(stopwords, doc1, doc2):
